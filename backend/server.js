@@ -10,16 +10,17 @@ const app = express();
 
 //Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cors({
-  origin: ["http://localhost:3000/", "https://mern-task-app.onrender.com"]
-}));
+-app.use(express.urlencoded({ extended: false }));
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://mern-task-app.onrender.com"],
+  })
+);
 
 app.use("/api/tasks", taskRoutes);
 
-//Routes
 app.get("/", (req, res) => {
-  res.send("Home Page");
+  res.send("Home page");
 });
 
 const PORT = process.env.PORT || 5000;
